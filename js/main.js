@@ -27,6 +27,26 @@ var album       = document.getElementById('album');
 var year        = document.getElementById('year');
 var bg          = document.getElementById('background');
 var timer;
+var audioBlob;
+
+function getTags(blob) {
+    musicmetadata(blob, function(err, result) {
+        if (err) throw err;
+        
+        author.innerText = result.artist;
+        album.innerText = result.album;
+        title.innerText = result.title;
+        year.innerText = result.year;
+
+        if (result.picture.length > 0) {
+            let picture = result.picture[0];
+            url = URL.createObjectURL(new Blob([picture.data], {'type': 'image/' + picture.format}));
+        } else {
+            url = "";
+        }
+        bg.src = url;
+    });
+}
 
 function initControl(type) {
     pause.style.display = 'none';

@@ -74,6 +74,7 @@
         </div>
         <img id="background"></img>
         <audio id="audio" src="" preload="none"></audio>
+        <script src="./js/musicmetadata/dist/musicmetadata.js"></script>
         <script src="./js/main.js"></script>
         <script>
             var dlButton = document.getElementById('download');
@@ -83,6 +84,15 @@
                 dlButton.setAttribute('href', src);
             }
             
+            audio.src = src;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", src);
+            xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+            xhr.onload = function(response) {
+                audioBlob = xhr.response;//xhr.response is now a blob object
+                getTags(audioBlob);
+            }
+            xhr.send();
             initControl(type);
             audio.load();
         </script>
