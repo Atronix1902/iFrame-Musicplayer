@@ -42,7 +42,7 @@ function getTags(blob) {
             let picture = result.picture[0];
             url = URL.createObjectURL(new Blob([picture.data], {'type': 'image/' + picture.format}));
         } else {
-            url = "";
+            url = "./media/audio.jpg";
         }
         bg.src = url;
     });
