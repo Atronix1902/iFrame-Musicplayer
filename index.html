@@ -76,20 +76,15 @@
         <audio id="audio" src="" preload="none"></audio>
         <script src="./js/main.js"></script>
         <script>
-            let dlButton = document.getElementById('download');
+            var dlButton = document.getElementById('download');
             dlButton.style.display = 'none';
-            if(src != null) {
-                video.src = src.replaceAll('../', './');
-            }
-            else {
-                video.src = "./media/test.mp4";
-            }
             if(dl) {
                 dlButton.style.display ='inline';
-                dlButton.setAttribute('href', video.src);
+                dlButton.setAttribute('href', src);
             }
+            
             initControl(type);
-            video.load();
+            audio.load();
         </script>
     </body>
 </html>
