@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link id="style" rel="stylesheet" type="text/css" href="./css/main.css"></link>
+        <link id="style" rel="stylesheet" type="text/css" href="./css/1.css"></link>
         <link rel="icon" type="image/jpeg" href="./media/icon.png">
         
         <!-- FontAwesome for icons -->
@@ -13,10 +13,10 @@
         <link href="./css/fontawesome/all.css" type="text/css" rel="stylesheet">
         <link href="./css/fontawesome/v4-shims.css" type="text/css" rel="stylesheet">
         
-        <title>Mediaplayer</title>
+        <title>Mp3 Player</title>
         <script>
             const myParams = new URLSearchParams(window.location.search);
-            const src = myParams.get('src');
+            const src = myParams.get('src') !=  null ? myParams.get('src') : './media/test.mp3';
             const dl = myParams.get('dl') != null ? myParams.get('dl') : false;
             const type = myParams.get('t') != null ? myParams.get('t') : '1';
             document.getElementById('style').setAttribute('href', './css/' + type + '.css');
@@ -24,34 +24,42 @@
     </head>
     
     <body>
-        <div id="overlay" class="unselectable">
-            <div id="empty"></div>
-            <div id="control-bar">
+        <div id="overlay">
+            <div id="infos">
+                <div id="title">
+
+                </div>
+                <div id="author">
+
+                </div>
+                <div id="album">
+
+                </div>
+                <div id="year">
+                    
+                </div>
+                <div id="time">
+                    <span id="current">0:00</span>
+                    <br>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div id="control-bar" class="unselectable">
                 <div id="play-pause">
                     <i id="play" class="fas fa-play clickable"></i>
-                    <i id="pause" class="fas fa-pause clickable"></i>
+                    <i id="pause" class="fas fa-pause clickable hidden"></i>
                 </div>
                 <div id="volume">
                     <div id="volicons">
                         <i id="volume-max" class="fas fa-volume-up clickable"></i>
-                        <i id="volume-mid" class="fas fa-volume-down clickable"></i>
-                        <i id="volume-min" class="fas fa-volume-mute clickable"></i>
+                        <i id="volume-mid" class="fas fa-volume-down clickable hidden"></i>
+                        <i id="volume-min" class="fas fa-volume-mute clickable hidden"></i>
                     </div>
                     <div id="volbar-wrapper" class="clickable">
                         <div id="volume-bar">
                             <div id="volbar-inner"></div>
                         </div>
                     </div>
-                </div>
-                <div id="time">
-                    <span id="current">0:00</span>
-                    /
-                    <span id="duration">0:00</span>
-                </div>
-                <div id="screening">
-                    <i id="expand" class="fas fa-expand clickable"></i>
-                    <i id="compress" class="fas fa-compress clickable"></i>
-                    <i id="pip" class="fas fa-compress-arrows-alt clickable"></i>
                 </div>
                 <div id="util">
                     <a id="download" download href=""><i class="fas fa-download clickable"></i></a>
@@ -64,7 +72,8 @@
                 </div>
             </div>
         </div>
-        <video preload="metadata" id="video" type="video/mp4" crossorigin="anonymous">Das Video konnte nicht gefunden werden bitte fülle den src parameter aus.</video>
+        <img id="background"></img>
+        <audio id="audio" src="" preload="none"></audio>
         <script src="./js/main.js"></script>
         <script>
             let dlButton = document.getElementById('download');
