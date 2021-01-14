@@ -38,6 +38,9 @@ function getTags(blob) {
         title.innerText = result.title;
         year.innerText = result.year;
 
+        document.getElementById('description').setAttribute('content', infos.innerHTML);
+        document.getElementById('sideTitle').innerHTML = result.title;
+
         if (result.picture.length > 0) {
             let picture = result.picture[0];
             url = URL.createObjectURL(new Blob([picture.data], {'type': 'image/' + picture.format}));
