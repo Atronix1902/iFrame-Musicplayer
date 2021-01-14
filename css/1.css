@@ -1,0 +1,213 @@
+@font-face {
+  font-family: 'Teko';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/teko/v10/LYjNdG7kmE0gfaN9oA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'ZCOOL QingKe HuangYou';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/zcoolqingkehuangyou/v5/2Eb5L_R5IXJEWhD3AOhSvFC554MOOahI4mR4jPe4.ttf) format('truetype');
+}
+body {
+  padding: 0px;
+  margin: 0px;
+  min-height: 245px;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+#background {
+  height: 110%;
+  width: 110%;
+  top: -5%;
+  left: -5%;
+  position: fixed;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  object-fit: cover;
+}
+#overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+#overlay #infos {
+  font-family: ZCOOL QingKe HuangYou, cursive;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  height: calc(100% - 90px);
+  width: 100%;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+#overlay #infos #title {
+  position: relative;
+  top: 10%;
+  font-size: 5vw;
+}
+#overlay #infos #time,
+#overlay #infos #author,
+#overlay #infos #year,
+#overlay #infos #album {
+  font-size: 3vw;
+}
+#overlay #infos #author {
+  position: relative;
+  top: 10%;
+}
+#overlay #infos #year,
+#overlay #infos #time,
+#overlay #infos #album {
+  position: relative;
+  top: 20%;
+}
+#overlay #control-bar {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 20px;
+  height: 80px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  color: #414141;
+  z-index: 2;
+  padding: 0px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+#overlay #control-bar #play-pause {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  display: inline-block;
+  width: 20px;
+  margin: 25px;
+  padding-top: 2.5px;
+}
+#overlay #control-bar #play-pause .hidden {
+  display: none;
+}
+#overlay #control-bar #volume {
+  display: inline-block;
+  position: relative;
+  left: 0px;
+  width: 40px;
+  margin: 25px;
+}
+#overlay #control-bar #volume #volicons {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  padding-top: 2.5px;
+}
+#overlay #control-bar #volume #volicons .hidden {
+  display: none;
+}
+#overlay #control-bar #volume #volbar-wrapper {
+  position: relative;
+  top: 0px;
+  left: 50px;
+  width: 0px;
+  height: 25px;
+  display: inline-block;
+  transition: width 1s ease-in-out;
+}
+#overlay #control-bar #volume #volbar-wrapper #volume-bar {
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+  top: calc(50% - 2px);
+  width: 100%;
+  height: 4px;
+  background-color: rgba(172, 170, 170, 0.5);
+  border: 0px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#overlay #control-bar #volume #volbar-wrapper #volume-bar #volbar-inner {
+  position: absolute;
+  display: inline-block;
+  left: 0px;
+  top: 0px;
+  background-color: #414141;
+  height: 100%;
+  width: 100%;
+}
+#overlay #control-bar #util {
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  margin: 25px;
+  padding-top: 2.5px;
+  right: 10px;
+}
+#overlay #control-bar #util a {
+  color: #414141;
+  text-decoration: none;
+}
+#overlay #progbar-wrapper {
+  position: absolute;
+  bottom: 80px;
+  left: 0px;
+  z-index: 2;
+  height: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#overlay #progbar-wrapper #progress-bar {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ececec;
+}
+#overlay #progbar-wrapper #progress-bar #preload {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background-color: rgba(158, 158, 158, 0.5);
+  width: 0px;
+  border: 0px solid black;
+  border-radius: 0px 20px 20px 0px;
+  overflow: hidden;
+}
+#overlay #progbar-wrapper #progress-bar #played {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background-color: #18C5C5;
+  width: 0px;
+  border: 0px solid black;
+  border-radius: 0px 20px 20px 0px;
+  overflow: hidden;
+}
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.clickable {
+  cursor: pointer;
+}

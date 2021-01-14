@@ -1,0 +1,224 @@
+//out: ../css/1.css
+
+@import url('https://fonts.googleapis.com/css?family=Teko|ZCOOL+QingKe+HuangYou&display=swap');
+
+body {
+    padding: 0px;
+    margin: 0px;
+    min-height: 245px;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#background {
+    height: 110%;
+    width: 110%;
+    top: -5%;
+    left: -5%;
+    position: fixed;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    object-fit: cover;
+}
+
+#overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    #infos {
+        font-family: ZCOOL QingKe HuangYou, cursive;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        height: calc(100% - 90px);
+        width: 100%;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        
+        #title {
+            position: relative;
+            top: 10%;
+            font-size: 5vw;
+        }
+
+        #time, #author, #year, #album{
+            font-size: 3vw;
+        }
+
+        #author {
+            position: relative;
+            top: 10%;
+        }
+
+        #year, #time, #album{
+            position: relative;
+            top: 20%;
+        }
+    }
+    
+    #control-bar {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 20px;
+        height: 80px;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        color: rgb(65, 65, 65);
+        z-index: 2;
+        padding: 0px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+
+        #play-pause {
+            position: relative;
+            top: 0px;
+            left: 0px;
+            display: inline-block;
+            width: 20px;
+            margin: 25px;
+            padding-top: 2.5px;
+
+            .hidden {
+                display: none; 
+            }
+        }
+    
+        #volume {
+            display: inline-block;
+            position: relative;
+            left: 0px;
+            width: 40px;
+            margin: 25px;
+            
+            #volicons {
+                display: inline-block;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 20px;
+                height: 20px;
+                padding-top: 2.5px;
+
+                .hidden {
+                    display: none; 
+                }
+            }
+    
+            #volbar-wrapper {
+                position: relative;
+                top: 0px;
+                left: 50px;
+                width: 0px;
+                height: 25px;
+                display: inline-block;
+                transition: width 1s ease-in-out;
+
+                #volume-bar {
+                    display: inline-block;
+                    position: absolute;
+                    left: 0px;
+                    top: calc(50% - 2px);
+                    width: 100%;
+                    height: 4px;
+                    background-color:rgba(172, 170, 170, 0.5);
+                    border: 0px solid black;
+                    border-radius: 10px;
+                    overflow: hidden;
+    
+                    #volbar-inner {
+                        position: absolute;
+                        display: inline-block;
+                        left: 0px;
+                        top: 0px;
+                        background-color:  rgb(65, 65, 65);
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    
+        #util {
+            display: inline-block;
+            position: absolute;
+            width: 20px;
+            margin: 25px;
+            padding-top: 2.5px;
+            right: 10px;
+    
+            a {
+                color: rgb(65, 65, 65);
+                text-decoration: none;
+            }
+        }
+    }
+    
+    #progbar-wrapper {
+        position: absolute;
+        bottom: 80px;
+        left: 0px;
+        z-index: 2;
+        height: 8px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        #progress-bar {
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(236, 236, 236);
+    
+            #preload {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                height: 100%;
+                background-color:rgba(158, 158, 158, 0.5);
+                width: 0px;
+                border: 0px solid black;
+                border-radius: 0px 20px 20px 0px;
+                overflow: hidden;
+            }
+    
+            #played {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                height: 100%;
+                background-color: #18C5C5;
+                width: 0px;
+                border: 0px solid black;
+                border-radius: 0px 20px 20px 0px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.clickable {
+    cursor: pointer;
+}
