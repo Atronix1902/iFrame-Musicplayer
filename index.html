@@ -2,9 +2,13 @@
 
 <html>
     <head>
+        <!-- Meta Information -->
         <meta charset="UTF-8">
         <meta meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="sideTitle">Mp3 Player</title>
+        <meta id="description" name="description" content="Mp3 Player">
         
+        <!-- Styling -->
         <link id="style" rel="stylesheet" type="text/css" href="./css/1.css"></link>
         <link rel="icon" type="image/jpeg" href="./media/icon.png">
         
@@ -13,19 +17,20 @@
         <link href="./css/fontawesome/all.css" type="text/css" rel="stylesheet">
         <link href="./css/fontawesome/v4-shims.css" type="text/css" rel="stylesheet">
         
-        <title id="sideTitle">Mp3 Player</title>
-        <meta id="description" name="description" content="Mp3 Player">
+        <!-- Setting up constances -->
         <script>
-            const myParams = new URLSearchParams(window.location.search);
-            const src = myParams.get('src') !=  null ? myParams.get('src') : './media/test.mp3';
-            const dl = myParams.get('dl') != null ? myParams.get('dl') : false;
-            const type = myParams.get('t') != null ? myParams.get('t') : '1';
-            document.getElementById('style').setAttribute('href', './css/' + type + '.css');
+            const myParams = new URLSearchParams(window.location.search);                           //Gets header url and extracts query information
+            const src = myParams.get('src') !=  null ? myParams.get('src') : './media/test.mp3';    //If src is given sets it as src-value else sets './media/test.mp3'
+            const dl = myParams.get('dl') != null ? myParams.get('dl') : false;                     //If dl is given sets it as dl-value else sets to false
+            const type = myParams.get('t') != null ? myParams.get('t') : '1';                       //If t is given sets it as type-value else sets 1
+            document.getElementById('style').setAttribute('href', './css/' + type + '.css');        //Sets stylesheet to given type
         </script>
     </head>
     
     <body>
+        <!-- Overlay Container -->
         <div id="overlay">
+            <!-- Information Container -->
             <div id="infos">
                 <div id="title">Title</div>
                 <div id="author">Author</div>
@@ -37,27 +42,34 @@
                     <span id="duration">Duration: 0:00</span>
                 </div>
             </div>
+            <!-- Control-bar -->
             <div id="control-bar" class="unselectable">
+                <!-- Play/Pause buttons -->
                 <div id="play-pause">
                     <i id="play" class="fas fa-play clickable"></i>
                     <i id="pause" class="fas fa-pause clickable hidden"></i>
                 </div>
+                <!-- Volume-Control -->
                 <div id="volume">
+                    <!-- Icons -->
                     <div id="volicons">
                         <i id="volume-max" class="fas fa-volume-up clickable"></i>
                         <i id="volume-mid" class="fas fa-volume-down clickable hidden"></i>
                         <i id="volume-min" class="fas fa-volume-mute clickable hidden"></i>
                     </div>
+                    <!-- Volume-bar -->
                     <div id="volbar-wrapper" class="clickable">
                         <div id="volume-bar">
                             <div id="volbar-inner"></div>
                         </div>
                     </div>
                 </div>
+                <!-- Utilities -->
                 <div id="util">
                     <a id="download" download href=""><i class="fas fa-download clickable"></i></a>
                 </div>
             </div>
+            <!-- Progress-bar -->
             <div id="progbar-wrapper" class="clickable">
                 <div id="progress-bar">
                     <div id="preload"></div>
@@ -65,27 +77,31 @@
                 </div>
             </div>
         </div>
+
+        <!-- Audio and Background -->
         <img id="background"></img>
         <audio id="audio" src="" preload="none"></audio>
+        
+        <!-- Adding Scripts -->
         <script src="./js/musicmetadata/dist/musicmetadata.js"></script>
         <script src="./js/main.js"></script>
         <script>
-            var dlButton = document.getElementById('download');
-            dlButton.style.display = 'none';
-            if(dl) {
-                dlButton.style.display ='inline';
-                dlButton.setAttribute('href', src);
+            var dlButton = document.getElementById('download'); //Gets download-button
+            dlButton.style.display = 'none';                    //Hides download-button
+            if(dl) {                                            //If download is activated
+                dlButton.style.display ='inline';               //Shows download-button
+                dlButton.setAttribute('href', src);             //Sets given-source as download-source    
             }
             
-            audio.src = src;
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", src);
-            xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-            xhr.onload = function(response) {
-                audioBlob = xhr.response;//xhr.response is now a blob object
-                getTags(audioBlob);
+            audio.src = src;                                    //Sets given-source as media-source
+            var xhr = new XMLHttpRequest();                     //Creates new request
+            xhr.open("GET", src);                               //Initialises request as a Get request on the given source as asynchronous
+            xhr.responseType = "blob";                          //Forces the HTTP response, response-type header to be blob
+            xhr.onload = function() {
+                audioBlob = xhr.response;                       //Resquest response is now a blob object
+                getTags(audioBlob);                             //Gets the tags of the AudioBlob
             }
-            xhr.send();
+            xhr.send();                                         //Sends the request
             initControl(type);
             audio.load();
         </script>
