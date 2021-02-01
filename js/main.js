@@ -78,6 +78,7 @@ function initControl(type) {
     volIcons.addEventListener('mouseover', function() {
         clearTimeout(timer);
         volBarWrap.style.width = '100px';
+        console.log("volIcons Mouseover");
     });
 
     volBarWrap.addEventListener('mouseover', function() {
@@ -91,6 +92,7 @@ function initControl(type) {
         timer = setTimeout(function() {
             volBarWrap.style.width = '0';
         }, 1000);
+        console.log("volume Mouseleave");
     });
 
     audio.addEventListener('pause', function() {
