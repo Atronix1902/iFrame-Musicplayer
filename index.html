@@ -102,8 +102,8 @@
                 getTags(audioBlob);                             //Gets the tags of the AudioBlob
             }
             xhr.send();                                         //Sends the request
-            initControl(type);
-            audio.load();
+            initControl(type);                                  //Initiates control and content
+            audio.load();                                       //Starts to load the audio in the background
         </script>
     </body>
 </html>
