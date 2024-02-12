@@ -15,7 +15,7 @@ This would create a clean musicplayer:
 ```
 It's possible to use it via my website too:
 ```html
-<iframe height="900" width="1600" src="https://kriebel.ddnsfree.com/mediaplayer/mp3/?src=<url to soundfile>">
+<iframe height="900" width="1600" src="https://iframe.kriebel.ddnsfree.com/music/?src=<url to soundfile>">
 ```
 But this option only provides support of using URL as filesource.
 
@@ -40,7 +40,7 @@ Example of full configurated player:
 ```
 
 and would create following mediaplayer:
-![https://kriebel.ddnsfree.com/mediaplayer/mp3/?src=./media/test.mp3&t=1&dl=true](https://kriebel.ddnsfree.com/media/images/other/mp3_screenshot.jpg)
+![https://iframe.kriebel.ddnsfree.com/music/?src=./media/test.mp3&t=1&dl=true](https://kriebel.ddnsfree.com/media/images/other/mp3_screenshot.jpg)
 
 # Styling
 
